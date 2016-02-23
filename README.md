@@ -109,6 +109,12 @@ vk::ImageCreateInfo ci(
 </code>
 </pre>
 
+# String conversions
+
+At development time it can be quite handy to have a utility function that can convert an enum or flags to a string for debugging purposes. To achieve this,
+we have implemented <code>getString(type)</code> functions for all enums and flags. Calling <code>getString(vk::SharingMode::eExclusive)</code> will return 'Exclusive' and calling
+<code>getString(vk::QueueFlagBits::eGraphics | vk::QueueFlagBits::eCompute)</code> will return the concatenated string 'Graphics | Compute'.
+
 # Alternative Initialization of Structs
 
 Another nice feature of those constructors is that sType is being initialized internally and thus is always correct.
@@ -185,7 +191,7 @@ before this line:
 
 # Build instructions for VkCppGenerator
 
-* Clone the repository
-* Download tinyxml from http://www.grinninglizard.com/tinyxml/index.html and extract it in the source folder
+* Clone the repository: git clone https://github.com/nvpro-pipeline/vkcpp.git
+* Update submodules: git submodule update --init --recursive
 * Use CMake to generate a solution or makefile for your favourite build environment
 * Launch the build
